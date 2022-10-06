@@ -1,0 +1,22 @@
+<html>
+<body>
+    <div id="root"></div>
+    <script>
+        var host = 'ws://127.0.0.1:8080/WebSocketChatApp/websockets.php';
+        var socket = new WebSocket(host);
+        socket.onopen = function(event) { 
+			console.log("Connection Established!");
+            socket.send("Message 1 from client");
+            socket.send("Message 2 from client");
+            // socket.close();
+		}
+        socket.onmessage = function(e) {
+            console.log("MESSAGE: ");
+            console.log(e.data);
+        };
+        socket.onerror = function(e) {
+            console.log(e);
+        }
+    </script>
+</body>
+</html>
